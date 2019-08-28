@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
-import 'vendas.dart';
+import 'nova_venda.dart';
+import 'vendas_page.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(HomePage());
 
-class MyApp extends StatelessWidget {
+final routes = {
+  '/vendas': (BuildContext context) => new VendasPage(),
+  '/novavenda': (BuildContext context) => new NovaVendaPage(),
+  '/': (BuildContext context) => new HomePage(),
+};
+
+class HomePage extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Doce Amor',
+      title: 'Doce Amor!',
       // theme: ThemeData(
         // This is the theme of your application.
         //
@@ -21,7 +28,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         // primarySwatch: Colors.yellow,
       // ),
-      home: MyHomePage(title: 'Doce Amor'),
+      home: MyHomePage(title: 'teste'),
     );
   }
 }
@@ -34,63 +41,29 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    var card = new Card(
-      child: new Column(
-        children: <Widget>[
-          new ListTile(
-            leading: new Icon(Icons.fastfood, color: Colors.red, size: 26.0,),
-            title: new Text("Maycon Douglas", style: new TextStyle(fontWeight: FontWeight.w400),),
-          ),
-          new ListTile(
-            leading: new Icon(Icons.attach_money, color: Colors.red, size: 26.0,),
-            title: new Text("Maycon Douglas", style: new TextStyle(fontWeight: FontWeight.w400),),
-          )
-        ],
-      ),
-    );
-
-
-    final sizedBox = new Container(
-      margin: new EdgeInsets.only(left: 10.0, right: 10.0),
-      child: SizedBox(
-        height: 120.0,
-        child: card,
-      ),
-    );
-
-
-
     return Scaffold(
+      
       appBar: AppBar(title: Text(title), backgroundColor: Colors.redAccent),
-      body: new Vendas(),
+      body: new VendasPage(),
       drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('Cabecalho'),
+              child: Image(image: AssetImage("images/logo.png"),),
               decoration: BoxDecoration(
                 color: Colors.redAccent,
               ),
             ),
             ListTile(
-              title: Text('Item 1'),
+              title: Text('Vendas'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.pop(context);
               },
             ),
             ListTile(
               title: Text('Item  2'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.pop(context);
               },
             )
@@ -100,3 +73,4 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+
