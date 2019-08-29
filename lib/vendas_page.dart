@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 
 class VendasPage extends StatefulWidget {
-  @override
-  _VendasPageState createState() => _VendasPageState();
+
+   _VendasPageState createState() => _VendasPageState();
 }
 
 class _VendasPageState extends State<VendasPage> {
-
+  
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false, // retirando tag debug
-      home: Padding(
-        padding: const EdgeInsets.only(top: 40.0, left: 8.0, right: 8.0),
+    return Scaffold(
+      body: Center(
         child: Column(
           children: <Widget>[
             Card(
@@ -42,7 +40,12 @@ class _VendasPageState extends State<VendasPage> {
             ),
           ],
         )
-        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.of(context).pushNamed("/novavenda"),
+        child: Icon(Icons.add),
+        backgroundColor: Colors.pink,
+      ),
     );
   }
 }

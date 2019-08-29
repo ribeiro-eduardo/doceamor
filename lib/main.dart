@@ -7,7 +7,7 @@ void main() => runApp(HomePage());
 final routes = {
   '/vendas': (BuildContext context) => new VendasPage(),
   '/novavenda': (BuildContext context) => new NovaVendaPage(),
-  '/': (BuildContext context) => new HomePage(),
+  '/': (BuildContext context) => new VendasPage(),
 };
 
 class HomePage extends StatelessWidget {
